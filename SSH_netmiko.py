@@ -14,8 +14,11 @@ cisco_device = {
 }
 
 connection = ConnectHandler(**cisco_device)
+prompt = connection.find_prompt()
+print(prompt)
+connection.enable()   #enter enable mode
 
-output = connection.send_command("show ver")
+output = connection.send_command("show ip int bri")
 print(output)
 
 print("Closing connection")
