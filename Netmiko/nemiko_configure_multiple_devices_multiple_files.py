@@ -35,7 +35,7 @@ for device in device_list:
     output = connection.send_config_from_file(file)
     print(output)
 
-    print(f'Closing connection to {cisco_device["host"]}')
+    print(f'Closing connection to {device["host"]}')
     connection.disconnect()
 
     print('#' * 30)
