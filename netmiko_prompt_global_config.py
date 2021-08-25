@@ -1,8 +1,8 @@
 from netmiko import ConnectHandler
 cisco_device = {
        'device_type': 'cisco_ios',     #device type from https://github.com/ktbyers/netmiko/blob/master/netmiko/ssh_dispatcher.py
-       'host': '10.1.1.10',
-       'username': 'u1',
+       'host': '192.168.31.101',
+       'username': 'cisco',
        'password': 'cisco',
        'port': 22,             # optional, default 22
        'secret': 'cisco',      # this is the enable password
@@ -10,7 +10,7 @@ cisco_device = {
        }
 connection = ConnectHandler(**cisco_device)
 
-# getting the router's prompt
+#getting the router's prompt
 prompt = connection.find_prompt()
 if '>' in prompt:
        connection.enable()   # entering the enable mode
@@ -18,8 +18,12 @@ if '>' in prompt:
 output = connection.send_command('sh run')
 print(output)
 
+
+
 if not connection.check_config_mode(): # returns True if it's already in the global config mode
        connection.config_mode()  # entering the global config mode
+
+
 
 # print(connection.check_config_mode())
 connection.send_command('username u3 secret cisco')
