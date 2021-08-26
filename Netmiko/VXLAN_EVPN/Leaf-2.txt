@@ -1,0 +1,22 @@
+feature interface-vlan
+feature ospf
+feature pim
+!
+router ospf 1
+router-id 10.1.1.12
+!
+interface loopback0
+ip address 10.1.1.12/32
+ip router ospf 1 area 0
+ip pim sparse-mode
+mtu 9216
+no shutdown
+!
+interface e1/8
+ip address 192.168.2.2/24
+mtu 9216
+ip router ospf 1 area 0
+ip pim sparse-mode
+no shutdown
+!
+ip pim rp-address 10.1.1.1 group-list 239.0.0.0/8

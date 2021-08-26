@@ -5,7 +5,7 @@
 from netmiko import ConnectHandler
 cisco_device = {
     "device_type": "cisco_nxos",
-    "host": "192.168.31.105",
+    "host": "192.168.31.101",
     "username": "cisco",
     "password": "cisco",
     "port": "22",
@@ -18,7 +18,7 @@ prompt = connection.find_prompt()
 print(prompt)
 connection.enable()   #enter enable mode
 
-output = connection.send_command("show ip int bri")
+output = connection.send_command("show ip route ospf")
 print(output)
 
 print("Closing connection")
